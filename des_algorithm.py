@@ -1,12 +1,10 @@
-
-
 from des import DesKey
-
-des1_key = DesKey(b"some key")  # for DES
-des3_key = DesKey(b"a key for TRIPLE")  # for 3DES, same as "a key for TRIPLEa key fo"
+from algorithm import Algorithm
 
 
-
+# Example keys:
+# "some key" - DES
+# "a key for TRIPLE" - 3DES
 
 
 class DesAlgorithm(Algorithm):

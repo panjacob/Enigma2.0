@@ -1,15 +1,4 @@
-from des import Des1, Des3
-from abc import abstractmethod
-
-
-class Algorithm:
-    @abstractmethod
-    def encrypt(self, data):
-        pass
-
-    @abstractmethod
-    def decrypt(self, data):
-        pass
+from des_algorithm import Des1, Des3
 
 
 def get_algorithm(algorithm_number):
