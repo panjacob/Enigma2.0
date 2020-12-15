@@ -3,6 +3,30 @@ from algorithm import Algorithm
 from Crypto import Random
 from Crypto.Cipher import AES
 
+"""
+Title
+-----
+    AES algorithm
+    
+Author
+-------
+    Rafał Kreft
+    
+Description
+-----------
+
+AES - The AES algorithm (also known as the Rijndael algorithm) is a symmetrical
+      block cipher algorithm that takes plain text in blocks of 128 bits and 
+      converts them to ciphertext using keys of 128, 192, and 256 bits. 
+      Since the AES algorithms considered secure, it is in the worldwide
+      standard.
+      
+Source of encryption module
+---------------------------
+https://pypi.org/project/pycryptodome/ 
+"""
+
+
 # lambda expressions for formatting encrypted and decrypted data
 pad = lambda s: bytes(s + (16 - len(s) % 16) * chr(16 - len(s) % 16), 'utf-8')
 un_pad = lambda s: s[0:-ord(s[-1:])]

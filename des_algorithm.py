@@ -1,6 +1,32 @@
 from des import DesKey
 from algorithm import Algorithm
 
+"""
+Title
+-----
+    DES algorithms
+
+Author
+-------
+    Jakub Kwiatkowski
+
+Description
+-----------
+
+DES - is a block cipher algorithm that takes plain text in blocks of 64 bits 
+      and converts them to ciphertext using keys of 48 bits. It is a symmetric
+      key algorithm, which means that the same key is used for encrypting and 
+      decrypting data.
+
+3DES - Triple DES is a encryption technique which uses three instance of DES on
+       same plain text. It uses there different types of key choosing technique
+       in first all used keys are different and in second two keys are same and
+       one is different and in third all keys are same.
+
+Source of encryption module
+---------------------------
+https://pypi.org/project/des/
+"""
 
 # Example keys:
 # "some key" - DES

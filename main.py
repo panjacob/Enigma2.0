@@ -27,6 +27,11 @@ AES - The AES algorithm (also known as the Rijndael algorithm) is a symmetrical
       converts them to ciphertext using keys of 128, 192, and 256 bits. 
       Since the AES algorithms considered secure, it is in the worldwide
       standard.
+      
+Sources of encryption modules
+-----------------------------
+https://pypi.org/project/pycryptodome/
+https://pypi.org/project/des/
 """
 
 mode = get_int('mode: 1- encrypt | 2- decrypt: ', 1, 2)
