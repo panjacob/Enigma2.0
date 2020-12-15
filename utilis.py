@@ -1,7 +1,20 @@
 from des_algorithm import Des1, Des3
+from aes_algorithm import Aes
 
 
 def get_algorithm(algorithm_number):
+    """
+    Chooses right algorithm class based on user's input
+
+     Parameters
+    ----------
+        algorithm_number : int
+             Selected algorithm number
+
+    Returns
+    -------
+
+    """
     try:
         key_str = input('key: ')
         if algorithm_number == 1:
@@ -9,9 +22,7 @@ def get_algorithm(algorithm_number):
         elif algorithm_number == 2:
             return Des3(key_str)
         else:
-            # TODO: dodatkowy_parametr = input('coś: ')
-            # TODO: return Aes(bla, bla, bla)
-            pass
+            return Aes(key_str)
 
     except:
         print('Initialization error, probably wrong key')
@@ -19,6 +30,28 @@ def get_algorithm(algorithm_number):
 
 
 def get_int(description, minimum, maximum):
+    """
+    Gets input number and checks if is in right range
+
+     Parameters
+    ----------
+        description : int
+             Selected number
+
+        minimum : int
+            Minimum range value
+
+        maximum : int
+            Maximum range value
+
+    Returns
+    -------
+        get_int(description, minimum, maximum): int
+            If the input number is in wrong range or is not a number
+
+        is_in_range(number, minimum, maximum): boolean
+            If the input number is in a number and is in right range
+    """
     try:
         number = int(input(description))
         if is_in_range(number, minimum, maximum):
@@ -32,4 +65,25 @@ def get_int(description, minimum, maximum):
 
 
 def is_in_range(number, minimum, maximum):
+    """
+    Returns true/false depending whether input number is in right range
+
+    Parameters
+    ----------
+        description : int
+             Selected number
+
+        minimum : int
+            Minimum range value
+
+        maximum : int
+            Maximum range value
+
+    Returns
+    -------
+        true
+            If it is within the specified range
+        false
+            if it is not within the specified range
+    """
     return minimum <= number <= maximum
