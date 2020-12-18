@@ -35,9 +35,14 @@ https://pypi.org/project/des/
 """
 
 mode = get_int('mode: 1- encrypt | 2- decrypt: ', 1, 2)
-algorithm_number = get_int('algorithm: 1- DES | 2- 3DES | 3- AES: ', 1, 3)
-algorithm = get_algorithm(algorithm_number)
-data = input('data: ')
+algorithm_number = get_int('algorithm: 1- DES | 2- 3DES | 3- AES: ', 1, 5)
+algorithm = get_algorithm(algorithm_number, mode)
+if algorithm_number == 4 and mode == 2:
+    a = int(input('a: '))
+    b = int(input('b: '))
+    data = (a, b)
+else:
+    data = input('data: ')
 
 if mode == 1:
     result = algorithm.encrypt(data)

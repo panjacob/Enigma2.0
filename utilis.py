@@ -1,8 +1,9 @@
 from des_algorithm import Des1, Des3
 from aes_algorithm import Aes
+from elgamal_algorithm import ElgamalAlgorithm
 
 
-def get_algorithm(algorithm_number):
+def get_algorithm(algorithm_number, mode):
     """
     Chooses right algorithm class based on user's input
 
@@ -16,17 +17,30 @@ def get_algorithm(algorithm_number):
 
     """
     try:
-        key_str = input('key: ')
         if algorithm_number == 1:
+            key_str = input('key: ')
             return Des1(key_str)
         elif algorithm_number == 2:
+            key_str = input('key: ')
             return Des3(key_str)
-        else:
+        elif algorithm_number == 3:
+            key_str = input('key: ')
             return Aes(key_str)
+        elif algorithm_number == 4:
+            p = int(input('p: '))
+            if mode == 1:
+                g = int(input('g: '))
+                y = int(input('y: '))
+                return ElgamalAlgorithm(p=p, g=g, y=y)
+            if mode == 2:
+                x = int(input('x: '))
+                return ElgamalAlgorithm(p=p, x=x)
+
+
 
     except:
         print('Initialization error, probably wrong key')
-        return get_algorithm(algorithm_number)
+        return get_algorithm(algorithm_number, mode)
 
 
 def get_int(description, minimum, maximum):
