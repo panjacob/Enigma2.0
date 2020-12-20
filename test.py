@@ -1,6 +1,7 @@
 import unittest
 from des_algorithm import Des1, Des3
 from aes_algorithm import Aes
+from elgamal_algorithm import ElgamalAlgorithm, PrivateKey, PublicKey
 
 
 class TestAlgorithms(unittest.TestCase):
@@ -28,6 +29,15 @@ class TestAlgorithms(unittest.TestCase):
         decrypted = aes.decrypt(encrypted)
 
         self.assertEqual(decrypted, original_message)
+
+    def test_elgamal(self):
+        elgamal = ElgamalAlgorithm(p=17902191281122025399, g=7, y=66820913534799604363162835971702567696,
+                                   x=599088883783335410)
+        data = "Siemanko"
+        encrypted_message = elgamal.encrypt(data).get()
+        decrypted_message = elgamal.decrypt(encrypted_message)
+
+        self.assertEqual(data, decrypted_message)
 
 
 if __name__ == '__main__':

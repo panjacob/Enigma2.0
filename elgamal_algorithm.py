@@ -20,10 +20,10 @@ class ElgamalAlgorithm(Algorithm):
     def __init__(self, p=None, x=None, g=None, y=None):
         if x:
             self.private_key = PrivateKey(p, x)
-            print(self.private_key)
+            # print(self.private_key)
         if g and y:
             self.public_key = PublicKey(p, g, y)
-            print(self.public_key)
+            # print(self.public_key)
 
     def encrypt(self, data):
         data_bytes = bytearray(data, 'utf-8')
@@ -34,18 +34,5 @@ class ElgamalAlgorithm(Algorithm):
         a, b = data
         cipher_text = CipherText(a,b)
         decrypted_message = Elgamal.decrypt(cipher_text, self.private_key)
-        return str(decrypted_message)
 
-
-# public_key, private_key = Elgamal.newkeys(128)
-# print(public_key, private_key)
-# # public_key = PublicKey(17902191281122025399, 7, 66820913534799604363162835971702567696)
-# # private_key = PrivateKey(17902191281122025399, 599088883783335410)
-# data = "Siemanko"
-# data_bytes = bytearray(data, 'utf-8')
-# encrypted_message = Elgamal.encrypt(data_bytes, public_key)
-# a, b = encrypted_message.get()
-# print(a)
-# print(b)
-# decrypted_message = Elgamal.decrypt(encrypted_message, private_key)
-# # print(decrypted_message)
+        return decrypted_message.decode('utf-8')
