@@ -31,7 +31,9 @@ class TestAlgorithms(unittest.TestCase):
         self.assertEqual(decrypted, original_message)
 
     def test_elgamal(self):
-        elgamal = ElgamalAlgorithm(p=17902191281122025399, g=7, y=66820913534799604363162835971702567696,
+        elgamal = ElgamalAlgorithm(p=17902191281122025399,
+                                   g=7,
+                                   y=66820913534799604363162835971702567696,
                                    x=599088883783335410)
         data = "Siemanko"
         encrypted_message = elgamal.encrypt(data).get()
