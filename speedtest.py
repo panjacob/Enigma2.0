@@ -1,5 +1,6 @@
 from des_algorithm import Des1, Des3
 from aes_algorithm import Aes
+from dsa_algorithm import Dsa
 from elgamal_algorithm import ElgamalAlgorithm
 import datetime
 import matplotlib.pyplot as plt
@@ -32,6 +33,12 @@ def test_elgamal(message):
     decrypted_message = elgamal.decrypt(encrypted_message)
 
 
+# def test_dsa(message):
+#     dsa = Dsa
+#     decrypted = dsa.decrypt(message)
+#     encrypted = dsa.encrypt(message)
+
+
 repeat = 10000
 message_to_test = "Hello"
 
@@ -59,6 +66,12 @@ for i in range(0, repeat):
 elgamal_end = datetime.datetime.now()
 elgamal_result = elgamal_end - elgamal_start
 
+# dsa_start = datetime.datetime.now()
+# for i in range(0, repeat):
+#     test_dsa(message=message_to_test)
+# dsa_end = datetime.datetime.now()
+# dsa_result = dsa_end - dsa_start
+
 names = ['1des', '3des', 'aes', 'elgamal']
 values = [des1_result.microseconds, des3_result.microseconds, aes_result.microseconds, elgamal_result.microseconds]
 plt.subplot(133)
@@ -66,6 +79,5 @@ plt.title('10000 repeats, message="Hello"')
 plt.ylabel('microseconds')
 plt.xlabel('algorithm')
 plt.bar(names, values)
-
 
 plt.show()
