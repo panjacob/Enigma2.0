@@ -1,6 +1,30 @@
 from elgamal.elgamal import Elgamal, PublicKey, PrivateKey, CipherText
 from algorithm import Algorithm
 
+"""
+Title
+-----
+    Elgamal algorithm
+
+Author
+-------
+    Jakub Kwiatkowski
+
+Description
+-----------
+
+ELGAMAL - In cryptography, the ElGamal encryption system is an asymmetric key
+          encryption algorithm for public-key cryptography which is based on the
+          Diffie–Hellman key exchange. It was described by Taher Elgamal in 1985.
+          ElGamal encryption is used in the free GNU Privacy Guard software, recent
+          versions of PGP, and other cryptosystems. The Digital Signature Algorithm
+          (DSA) is a variant of the ElGamal signature scheme, which should not be
+          confused with ElGamal encryption.
+
+Source of encryption module
+---------------------------
+https://pypi.org/project/elgamal/
+"""
 
 # self.private_key = PrivateKey(
 # 22763364761752953499026581212788555278960115429036559359008266034809244953613445346099559800203421465023198696515011456216983906912540855829748849985504680955686758319183123469098642497912279066928820225677280437400965215613642029762121710699272627595608213571195042757435653822268173513032123061816835414358606371708059281001644311399894096755888648610475759920709784815080149187393529880347379238509950062912420612352960851772927061255678641760429569099975421238093889460074159155408386923334998490183741962433866252635460188243039431437723720973865481584323106766117621977920270406863606367168428324584755243764643
@@ -17,7 +41,36 @@ from algorithm import Algorithm
 
 
 class ElgamalAlgorithm(Algorithm):
+    """
+    A class to represents a Elgamal algorithm, inherits from Algorithm class.
+
+    Attributes
+    ----------
+        Algorithm : Algorithm.class
+            All algorithm abstract methods must be implemented by ElgamalAlgorithm class
+
+    Methods
+    -------
+        encrypt(self, data):
+            Encrypts and encodes data input
+
+        decrypt(self, data):
+            Decrypts and decodes encrypted data
+    """
+
     def __init__(self, p=None, x=None, g=None, y=None):
+        """
+                Generates private/public key.
+                (Key selection specified in utilis.py)
+
+                Parameters
+                ----------
+                    p, g, y : int
+                        Parameters needed to create a public key
+
+                    x : int
+                        Parameter needed to create a private key
+                """
         if x:
             self.private_key = PrivateKey(p, x)
             # print(self.private_key)
@@ -26,13 +79,39 @@ class ElgamalAlgorithm(Algorithm):
             # print(self.public_key)
 
     def encrypt(self, data):
+        """
+        Takes in user message, changes it to a byte array and encrypts it with public key.
+
+        Parameters
+        ----------
+            data : String
+                User-specified input plain text message
+
+        Returns
+        -------
+            encrypted_message : CipherText
+                Result of elgamal encrypt function
+        """
         data_bytes = bytearray(data, 'utf-8')
         encrypted_message = Elgamal.encrypt(data_bytes, self.public_key)
         return encrypted_message
 
     def decrypt(self, data):
+        """
+        Decrypts message using private key and CipherText created from input data.
+
+        Parameters
+        ----------
+            data : object
+                Object containing two int variables a and b
+
+        Returns
+        -------
+            encrypted_message : bytearray
+                Decoded result of elgamal decrypt function
+        """
         a, b = data
-        cipher_text = CipherText(a,b)
+        cipher_text = CipherText(a, b)
         decrypted_message = Elgamal.decrypt(cipher_text, self.private_key)
 
         return decrypted_message.decode('utf-8')

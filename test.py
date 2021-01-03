@@ -1,6 +1,7 @@
 import unittest
 from des_algorithm import Des1, Des3
 from aes_algorithm import Aes
+from dsa_algorithm import Dsa
 from elgamal_algorithm import ElgamalAlgorithm, PrivateKey, PublicKey
 
 
@@ -40,6 +41,14 @@ class TestAlgorithms(unittest.TestCase):
         decrypted_message = elgamal.decrypt(encrypted_message)
 
         self.assertEqual(data, decrypted_message)
+
+    def test_dsa(self):
+        dsa = Dsa
+        message = "Hello world!"
+        dsa.encrypt(message)
+
+        self.assertEqual("The message is authentic.", dsa.decrypt("Hello world!"))
+        self.assertEqual("The message is not authentic.", dsa.decrypt("Hi world!"))
 
 
 if __name__ == '__main__':

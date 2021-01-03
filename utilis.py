@@ -1,6 +1,7 @@
 from des_algorithm import Des1, Des3
 from aes_algorithm import Aes
 from elgamal_algorithm import ElgamalAlgorithm
+from dsa_algorithm import Dsa
 
 
 def get_algorithm(algorithm_number, mode):
@@ -11,6 +12,9 @@ def get_algorithm(algorithm_number, mode):
     ----------
         algorithm_number : int
              Selected algorithm number
+
+        mode : int
+            Selected encryption or decryption
 
     Returns
     -------
@@ -35,8 +39,8 @@ def get_algorithm(algorithm_number, mode):
             if mode == 2:
                 x = int(input('x: '))
                 return ElgamalAlgorithm(p=p, x=x)
-
-
+        elif algorithm_number == 5:
+            return Dsa
 
     except:
         print('Initialization error, probably wrong key')
@@ -84,7 +88,7 @@ def is_in_range(number, minimum, maximum):
 
     Parameters
     ----------
-        description : int
+        number : int
              Selected number
 
         minimum : int
